@@ -62,6 +62,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apps\WeiXinChatFlow.cs" />
     <Compile Include="Controllers\TheCoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -139,12 +140,21 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\TheCore\Test.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\L.NENU.Component\L.NENU.Component.csproj">
+      <Project>{1E2D4605-2874-4170-8058-F83BA7EE5AD6}</Project>
+      <Name>L.NENU.Component</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L.NENU.Core\L.NENU.Core.csproj">
+      <Project>{945E3E14-80BF-4262-AA03-5B443799FA47}</Project>
+      <Name>L.NENU.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\L.NENU.Domain\L.NENU.Domain.csproj">
       <Project>{36E841BA-DF9E-47B6-9620-6C925B31374F}</Project>
       <Name>L.NENU.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\L.NENU.Service\L.NENU.Service.csproj">
+      <Project>{04D68B77-D933-4B4E-9527-86C637B15F21}</Project>
+      <Name>L.NENU.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1E2D4605-2874-4170-8058-F83BA7EE5AD6}</ProjectGuid>
+    <ProjectGuid>{04D68B77-D933-4B4E-9527-86C637B15F21}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>L.NENU.Component</RootNamespace>
-    <AssemblyName>L.NENU.Component</AssemblyName>
+    <RootNamespace>L.NENU.Service</RootNamespace>
+    <AssemblyName>L.NENU.Service</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,8 +33,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
-    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,30 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DoWeiXinChat.cs" />
+    <Compile Include="IDoWeiXinChat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\L.NENU.Core\L.NENU.Core.csproj">
-      <Project>{945E3E14-80BF-4262-AA03-5B443799FA47}</Project>
-      <Name>L.NENU.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\L.NENU.Domain\L.NENU.Domain.csproj">
-      <Project>{36E841BA-DF9E-47B6-9620-6C925B31374F}</Project>
-      <Name>L.NENU.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\L.NENU.IDataService\L.NENU.IDataService.csproj">
-      <Project>{A0F83977-F954-4CA8-88EA-2E9A15E1DB79}</Project>
-      <Name>L.NENU.IDataService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\L.NENU.Manager\L.NENU.Manager.csproj">
-      <Project>{A42FC81B-F851-4180-B403-9279532C409B}</Project>
-      <Name>L.NENU.Manager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\L.NENU.Service\L.NENU.Service.csproj">
-      <Project>{04D68B77-D933-4B4E-9527-86C637B15F21}</Project>
-      <Name>L.NENU.Service</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

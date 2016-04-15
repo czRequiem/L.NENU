@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace L.NENU.Component
+namespace L.NENU.Manager
 {
     public class Class1
     {
-
-
     }
 }

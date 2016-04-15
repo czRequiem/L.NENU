@@ -9,154 +9,87 @@ using System.IO;
 using System.Xml;
 using L.NENU.Domain;
 using System.Text;
-
+using L.NENU.Service;
+using L.NENU.Core;
+using L.NENU.Component;
+using L.NENU.Web.Apps;
 namespace L.NENU.Web.Controllers
 {
     public class TheCoreController : Controller
     {
 
         /// <summary>
-        /// 定义Token，与微信公共平台上的Token保持一致
+        /// 微信传过来的消息处理方法
         /// </summary>
-        private const string Token = "StupidMe";
-
-        /// <summary>
-        /// 验证签名，检验是否是从微信服务器上发出的请求
-        /// </summary>
-        /// <param name="model">请求参数模型 Model</param>
-        /// <returns>是否验证通过</returns>
-        private bool CheckSignature(WeChatRequestModel model)
+        public void Index()
         {
-            string signature, timestamp, nonce, tempStr;
-            //获取请求来的参数
-            signature = model.signature;
-            timestamp = model.timestamp;
-            nonce = model.nonce;
-            //创建数组，将 Token, timestamp, nonce 三个参数加入数组
-            string[] array = { Token, timestamp, nonce };
-            //进行排序
-            Array.Sort(array);
-            //拼接为一个字符串
-            tempStr = String.Join("", array);
-            //对字符串进行 SHA1加密
-            tempStr = FormsAuthentication.HashPasswordForStoringInConfigFile(tempStr, "SHA1").ToLower();
-            //判断signature 是否正确
-            if (tempStr.Equals(signature))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+            //实例化一个字典 多行 包含两个字符串  第一个表示名称 第二个存所包含的字符
+            Dictionary<string, string> Model = new Dictionary<string, string>();
 
+            //定义一个空的字符串 用于存放微信传过来的消息
+            string xmlData = string.Empty;
 
-        public void Valid(WeChatRequestModel model)
-        {
-            //获取请求来的 echostr 参数
-            string echoStr = model.echostr;
-            //通过验证
-            if (CheckSignature(model))
+            //检查传入的访问 是否附带poot
+            if (Request.HttpMethod.ToUpper() == "POST")
             {
-                if (!string.IsNullOrEmpty(echoStr))
+                //将Post  消息 序列化  并自动释放内存
+                using (Stream stream = Request.InputStream)
                 {
-                    //将随机生成的 echostr 参数 原样输出
-                    Response.Write(echoStr);
-                    //截止输出流
-                    Response.End();
+                    Byte[] byteData = new Byte[stream.Length];
+                    stream.Read(byteData, 0, (Int32)stream.Length);
+                    xmlData = Encoding.UTF8.GetString(byteData);
+                }
+
+                //判断是否转换成功 存在字符
+                if ((xmlData + "").Length > 0)//!string.IsNullOrEmpty(xmlData)
+                {
+                    try
+                    {
+                        //传递给核心层 格式化数据  传回数据字典
+                        Model = ReadWeiXinXml.XmlModel(xmlData);
+
+                        new WeiXinChatFlow().DoWeiXinType(Model);
+                    }
+                    catch
+                    {
+                        //未能正确处理 给微信服务器回复默认值
+                        DefaultResult();
+                    }
+                }
+                else
+                {
+                    //未能正确处理 给微信服务器回复默认值
+                    DefaultResult();
+                }
+
+            }
+            else //如果并非Post 请求
+            {
+                //get
+                WeChatRequestModel weixinR = new WeChatRequestModel();
+                weixinR.signature = Request.QueryString["signature"];
+                weixinR.timestamp = Request.QueryString["timestamp"];
+                weixinR.nonce = Request.QueryString["nonce"];
+                weixinR.echostr = Request.QueryString["echostr"];
+                //通过验证
+                if (new WeiXinChatFlow().CheckSignature(weixinR))
+                {
+                    if (!string.IsNullOrEmpty(weixinR.echostr))
+                    {
+                        //这里直接返回echostr参数接入成功;
+                        ReadWeiXinXml.ResponseToEnd(weixinR.echostr);
+                    }
                 }
             }
-        }
 
-
-        public ActionResult Test()
-        {
-            return View();
-        }
-
-
-        /// <summary>
-        /// 接收微信发送的XML消息并且解析
-        /// </summary>
-        [HttpPost]
-        private void Valid()
-        {
-            string xmlFromWeChat = new StreamReader(Request.InputStream).ReadToEnd();
-
-            if (!string.IsNullOrEmpty(xmlFromWeChat))
-            {
-                //封装请求类
-                XmlDocument requestDocXml = new XmlDocument();
-                requestDocXml.LoadXml(xmlFromWeChat);
-                XmlElement rootElement = requestDocXml.DocumentElement;
-                WxXmlModel WxXmlModel = new WxXmlModel();
-                WxXmlModel.ToUserName = rootElement.SelectSingleNode("ToUserName").InnerText;
-                WxXmlModel.FromUserName = rootElement.SelectSingleNode("FromUserName").InnerText;
-                WxXmlModel.CreateTime = rootElement.SelectSingleNode("CreateTime").InnerText;
-                WxXmlModel.MsgType = rootElement.SelectSingleNode("MsgType").InnerText;
-                switch (WxXmlModel.MsgType)
-                {
-                    case "text"://文本
-                        WxXmlModel.Content = rootElement.SelectSingleNode("Content").InnerText;
-                        break;
-                    case "image"://图片
-                        WxXmlModel.PicUrl = rootElement.SelectSingleNode("PicUrl").InnerText;
-                        break;
-                    case "event"://事件
-                        WxXmlModel.Event = rootElement.SelectSingleNode("Event").InnerText;
-                        if (WxXmlModel.Event == "subscribe")//关注类型
-                        {
-                            WxXmlModel.EventKey = rootElement.SelectSingleNode("EventKey").InnerText;
-                        }
-                        break;
-                    default:
-                        break;
-                }
-                string resxml = getText(WxXmlModel);
-                //return WxXmlModel;
-                Response.Write(resxml);
-            }
-        }
-
-
-        private string textCase(WxXmlModel xmlMsg)
-        {
-            int nowtime = ConvertDateTimeInt(DateTime.Now);
-            string msg = "";
-            msg = getText(xmlMsg);
-            string resxml = "<xml><ToUserName><![CDATA[" + xmlMsg.FromUserName + "]]></ToUserName><FromUserName><![CDATA[" + xmlMsg.ToUserName + "]]></FromUserName><CreateTime>" + nowtime + "</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[" + msg + "]]></Content><FuncFlag>0</FuncFlag></xml>";
-            return resxml;
         }
 
         /// <summary>
-        /// datetime转换为unixtime
+        /// 当无法处理请求的时候 返回 默认值
         /// </summary>
-        /// <param name="time"></param>
-        /// <returns></returns>
-        private int ConvertDateTimeInt(System.DateTime time)
+        public void DefaultResult()
         {
-            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
-            return (int)(time - startTime).TotalSeconds;
+            ReadWeiXinXml.ResponseToEnd("对不起 你所问的问题我现在无法回答 请联系开发者 林 微信号 DothL ");
         }
-        private int converDateTimeInt(System.DateTime time)
-        {
-            System.DateTime startTime = TimeZone.CurrentTimeZone.ToLocalTime(new System.DateTime(1970, 1, 1));
-            return (int)(time - startTime).TotalSeconds;
-        }
-
-        private string getText(WxXmlModel xmlMsg)
-        {
-            string con = xmlMsg.Content.Trim();
-
-            System.Text.StringBuilder retsb = new StringBuilder(200);
-            retsb.Append("这里放你的业务逻辑");
-            retsb.Append("接收到的消息：" + xmlMsg.Content);
-            retsb.Append("用户的OPEANID：" + xmlMsg.FromUserName);
-
-            return retsb.ToString();
-        }
-
-
     }
 }

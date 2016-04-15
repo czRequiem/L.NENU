@@ -40,6 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SImg.cs" />
+    <Compile Include="Smusic.cs" />
+    <Compile Include="SNews.cs" />
+    <Compile Include="SText.cs" />
+    <Compile Include="SVideo.cs" />
+    <Compile Include="SVoice.cs" />
     <Compile Include="WxXmlModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
