@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace L.NENU.Web.Models
+namespace L.NENU.Core.DomainSend
 {
     public class WeChatRequestModel
     {

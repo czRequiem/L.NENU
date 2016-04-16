@@ -2,22 +2,31 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using L.NENU.Core;
-using L.NENU.Service;
-using L.NENU.Component;
 using System.Web.Security;
-using L.NENU.Web.Models;
+using L.NENU.Core.DomainSend;
+using L.NENU.Service;
+using L.NENU.Core;
+using L.NENU.Component;
 
 namespace L.NENU.Web.Apps
 {
+    /// <summary>
+    /// 此类判断消息的类型 并寻找处理办法
+    /// </summary>
     public class WeiXinChatFlow
     {
+
+        /// <summary>
+        /// 当消息为用户所请求类型的时候 判断用户输入的是什么类型的数据 并调用消息处理模型实例进行处理
+        /// </summary>
+        /// <param name="Model"></param>
         public void DoWeiXinType(Dictionary<string, string> Model)
         {
             //实例化一个微信消息 处理模型 实例
             IDoWeiXinChat doWeiXinChat = new DoWeiXinChat();
             if (Model.Count > 0)
             {
+                //从数据字典中读取 该消息的类型值
                 string msgType = ReadWeiXinXml.ReadModel("MsgType", Model);
 
                 switch (msgType)
@@ -76,6 +85,8 @@ namespace L.NENU.Web.Apps
                 }
             }
         }
+
+
 
         /// <summary>
         /// 定义Token，与微信公共平台上的Token保持一致

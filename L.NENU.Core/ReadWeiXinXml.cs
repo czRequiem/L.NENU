@@ -71,7 +71,6 @@ namespace L.NENU.Core
             string Content = "";
             Content += "欢迎使用XXXX/微笑\n\n";
             Content += "输入以下序号开始获取最新信息：\n";
-
             Content += "1,新闻30分\n";
             Content += "2,电影预告\n";
             Content += "3,今日说法\n";

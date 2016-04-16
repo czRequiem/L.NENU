@@ -40,14 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="SImg.cs" />
-    <Compile Include="Smusic.cs" />
-    <Compile Include="SNews.cs" />
-    <Compile Include="SText.cs" />
-    <Compile Include="SVideo.cs" />
-    <Compile Include="SVoice.cs" />
-    <Compile Include="WxXmlModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Send\SImg.cs" />
+    <Compile Include="Send\Smusic.cs" />
+    <Compile Include="Send\SNews.cs" />
+    <Compile Include="Send\SText.cs" />
+    <Compile Include="Send\SVideo.cs" />
+    <Compile Include="Send\SVoice.cs" />
+    <Compile Include="ShowInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

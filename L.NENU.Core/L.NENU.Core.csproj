@@ -41,18 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainSend\WeChatRequestModel.cs" />
+    <Compile Include="IWeiXinXMLAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadWeiXinXml.cs" />
-    <Compile Include="WeiXin.cs" />
+    <Compile Include="WeiXinXMLAssembly.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\L.NENU.Domain\L.NENU.Domain.csproj">
       <Project>{36E841BA-DF9E-47B6-9620-6C925B31374F}</Project>
       <Name>L.NENU.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\L.NENU.IDataService\L.NENU.IDataService.csproj">
-      <Project>{A0F83977-F954-4CA8-88EA-2E9A15E1DB79}</Project>
-      <Name>L.NENU.IDataService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

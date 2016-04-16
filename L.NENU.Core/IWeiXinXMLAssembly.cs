@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DataModel.Send;
+using L.NENU.Domain.Send;
 
-namespace L.NENU.IDataService
+
+
+namespace L.NENU.Core
 {
-    public interface IWeiXin
+    public interface IWeiXinXMLAssembly
     {
 
         string SendText(SText model);

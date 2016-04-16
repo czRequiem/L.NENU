@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DataModel.Send
+namespace L.NENU.Domain.Send
 {
     public class SNews
     {
         public string ToUserName { get; set; }// 用户号（OpenID）
+
         public string FromUserName { get; set; }// 开发者微信号
 
         public long CreateTime { get; set; }// 创建时间

@@ -4,17 +4,20 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using L.NENU.Web.Models;
 using System.IO;
 using System.Xml;
 using L.NENU.Domain;
 using System.Text;
-using L.NENU.Service;
 using L.NENU.Core;
-using L.NENU.Component;
+using L.NENU.Core.DomainSend;
 using L.NENU.Web.Apps;
+
+
 namespace L.NENU.Web.Controllers
 {
+    /// <summary>
+    /// 微信传入消息的基本控制器 
+    /// </summary>
     public class TheCoreController : Controller
     {
 
@@ -48,9 +51,11 @@ namespace L.NENU.Web.Controllers
                         //传递给核心层 格式化数据  传回数据字典
                         Model = ReadWeiXinXml.XmlModel(xmlData);
 
+                        //判断请求类型 自动寻找处理方法  由核心层的  WeiXinChatFlow 判断数据 并调用DoWeiXinChat 实现  最后由ReadWeiXinXml 进行返回
                         new WeiXinChatFlow().DoWeiXinType(Model);
+
                     }
-                    catch
+                    catch(Exception ex)
                     {
                         //未能正确处理 给微信服务器回复默认值
                         DefaultResult();
@@ -61,7 +66,6 @@ namespace L.NENU.Web.Controllers
                     //未能正确处理 给微信服务器回复默认值
                     DefaultResult();
                 }
-
             }
             else //如果并非Post 请求
             {

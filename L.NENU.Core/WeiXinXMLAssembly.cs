@@ -4,17 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Xml;
 using System.Linq.Expressions;
-using L.NENU.IDataService;
-using DataModel.Send;
+using L.NENU.Domain.Send;
 
 namespace L.NENU.Core
 {
-    public class WeiXin:IWeiXin
+    public class WeiXinXMLAssembly:IWeiXinXMLAssembly
     {
-       
-
-       
-
         public string SendText(SText model)
         {
             return string.Format(@"<xml>
