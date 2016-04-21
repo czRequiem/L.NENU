@@ -19,44 +19,47 @@ namespace L.NENU.Component
         public void DoText(Dictionary<string, string> model)
         {
 
-            SNews mN = new SNews();
-            mN.FromUserName = ReadWeiXinXml.ReadModel("ToUserName", model);
-            mN.ToUserName = ReadWeiXinXml.ReadModel("FromUserName", model);
-            mN.CreateTime = long.Parse(ReadWeiXinXml.ReadModel("CreateTime", model));
-            mN.MsgType = "news";
+            SText mT = new SText();
+            string text = ReadWeiXinXml.ReadModel("Content", model).Trim();
 
+            mT.FromUserName = ReadWeiXinXml.ReadModel("ToUserName", model);
+            mT.ToUserName = ReadWeiXinXml.ReadModel("FromUserName", model);
+            mT.CreateTime = long.Parse(ReadWeiXinXml.ReadModel("CreateTime", model));
 
-
-            ShowInfo showInfo = new ShowInfo ();
-            showInfo.ShowTitle = ReadWeiXinXml.ReadModel("Content", model);
-
-            List<ArticlesModel> listNews = new ShowInfoComponent().GetShowInfoBy(showInfo);
-
-            if (listNews.Count > 5)
+            if (text == "?" || text == "？" || text == "帮助")
             {
-                mN.ArticleCount = 5;
+                mT.Content = ShowInfoComponent.Menu();
+                mT.MsgType = "text";
+                ReadWeiXinXml.ResponseToEnd(WeiXinXMLAssembly.SendText(mT));
             }
             else
             {
-                mN.ArticleCount = listNews.Count;
+                SNews mN = new SNews();
+                mN.FromUserName = ReadWeiXinXml.ReadModel("ToUserName", model);
+                mN.ToUserName = ReadWeiXinXml.ReadModel("FromUserName", model);
+                mN.CreateTime = long.Parse(ReadWeiXinXml.ReadModel("CreateTime", model));
+                mN.MsgType = "news";
+
+
+
+                ShowInfo showInfo = new ShowInfo();
+                showInfo.ShowTitle = ReadWeiXinXml.ReadModel("Content", model);
+
+                List<ArticlesModel> listNews = new ShowInfoComponent().GetShowInfoBy(showInfo);
+
+                if (listNews.Count > 5)
+                {
+                    mN.ArticleCount = 5;
+                }
+                else
+                {
+                    mN.ArticleCount = listNews.Count;
+                }
+
+                mN.Articles = listNews;
+                ReadWeiXinXml.ResponseToEnd(WeiXinXMLAssembly.SendNews(mN));
             }
 
-            mN.Articles = listNews;
-            ReadWeiXinXml.ResponseToEnd(WeiXinXMLAssembly.SendNews(mN));
-
-            //SText mT = new SText();
-            //string text = ReadWeiXinXml.ReadModel("Content", model).Trim();
-
-            //mT.FromUserName = ReadWeiXinXml.ReadModel("ToUserName", model);
-            //mT.ToUserName = ReadWeiXinXml.ReadModel("FromUserName", model);
-            //mT.CreateTime = long.Parse(ReadWeiXinXml.ReadModel("CreateTime", model));
-
-            //if (text == "?" || text == "？" || text == "帮助")
-            //{
-            //    mT.Content = ReadWeiXinXml.Menu();
-            //    mT.MsgType = "text";
-            //    ReadWeiXinXml.ResponseToEnd(WeiXinXMLAssembly.SendText(mT));
-            //}
             //else
             //{
             //    SNews mN = new SNews();
@@ -128,7 +131,7 @@ namespace L.NENU.Component
         public void DoOn(Dictionary<string, string> model)
         {
             SText mT = new SText();
-            mT.Content = ReadWeiXinXml.Menu();
+            mT.Content = ShowInfoComponent.Menu();
             mT.FromUserName = ReadWeiXinXml.ReadModel("ToUserName", model);
             mT.ToUserName = ReadWeiXinXml.ReadModel("FromUserName", model);
             mT.MsgType = "text";
@@ -144,7 +147,7 @@ namespace L.NENU.Component
         public void DoOnCode(Dictionary<string, string> model)
         {
             SText mT = new SText();
-            mT.Content = ReadWeiXinXml.Menu();
+            mT.Content = ShowInfoComponent.Menu();
             mT.FromUserName = ReadWeiXinXml.ReadModel("ToUserName", model);
             mT.ToUserName = ReadWeiXinXml.ReadModel("FromUserName", model);
             mT.MsgType = "text";
@@ -155,7 +158,7 @@ namespace L.NENU.Component
         public void DoSubCode(Dictionary<string, string> model)
         {
             SText mT = new SText();
-            mT.Content = ReadWeiXinXml.Menu();
+            mT.Content = ShowInfoComponent.Menu();
             mT.FromUserName = ReadWeiXinXml.ReadModel("ToUserName", model);
             mT.ToUserName = ReadWeiXinXml.ReadModel("FromUserName", model);
             mT.MsgType = "text";

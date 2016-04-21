@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cc.cs" />
     <Compile Include="DomainSend\WeChatRequestModel.cs" />
     <Compile Include="IWeiXinXMLAssembly.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

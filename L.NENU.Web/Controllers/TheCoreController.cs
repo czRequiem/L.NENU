@@ -11,6 +11,7 @@ using System.Text;
 using L.NENU.Core;
 using L.NENU.Core.DomainSend;
 using L.NENU.Web.Apps;
+using L.NENU.Domain.Send;
 
 
 namespace L.NENU.Web.Controllers
@@ -58,13 +59,15 @@ namespace L.NENU.Web.Controllers
                     catch(Exception ex)
                     {
                         //未能正确处理 给微信服务器回复默认值
-                        DefaultResult();
+                        DefaultResult(Model, ex);
                     }
                 }
                 else
                 {
-                    //未能正确处理 给微信服务器回复默认值
-                    DefaultResult();
+                    //string ex
+                    ////未能正确处理 给微信服务器回复默认值
+                    //DefaultResult(Model,ex);
+                    ReadWeiXinXml.ResponseToEnd("");
                 }
             }
             else //如果并非Post 请求
@@ -91,9 +94,18 @@ namespace L.NENU.Web.Controllers
         /// <summary>
         /// 当无法处理请求的时候 返回 默认值
         /// </summary>
-        public void DefaultResult()
+        public void DefaultResult(Dictionary<string, string> model, Exception ex)
         {
-            ReadWeiXinXml.ResponseToEnd("对不起 你所问的问题我现在无法回答 请联系开发者 林 微信号 DothL ");
+            IWeiXinXMLAssembly WeiXinXMLAssembly = new WeiXinXMLAssembly();
+            SText mT = new SText();
+            string text = ReadWeiXinXml.ReadModel("Content", model).Trim();
+
+            mT.FromUserName = ReadWeiXinXml.ReadModel("ToUserName", model);
+            mT.ToUserName = ReadWeiXinXml.ReadModel("FromUserName", model);
+            mT.CreateTime = long.Parse(ReadWeiXinXml.ReadModel("CreateTime", model));
+            mT.Content = string.Format( "对不起 你所问的问题我现在无法回答 请联系开发者 林 微信号 DothL 发生错误  错误详细 {0}",ex.ToString());
+            mT.MsgType = "text";
+            ReadWeiXinXml.ResponseToEnd(WeiXinXMLAssembly.SendText(mT));
         }
     }
 }
