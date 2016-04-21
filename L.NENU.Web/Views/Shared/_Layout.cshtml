@@ -1,88 +1,111 @@
-﻿<!DOCTYPE html>
+﻿<!DOCTYPE HTML>
 <html>
 <head>
-    <title>Home</title>@*引用样式表*@
-    <link href="../../Content/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
-    <link href="../../Content/css/style.css" type="text/css" rel="stylesheet" media="all">
-    <link href="../../Content/css/animate.css" rel="stylesheet" type="text/css" media="all">
-    @*设定内容标准*@
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Eco Farm Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-	Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <script type="text/javascript" src="../../Scripts/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="../../Scripts/modernizr.custom.js"></script>
-    <script type="text/javascript" src="../../Scripts/move-top.js"></script>
-    <script type="text/javascript" src="../../Scripts/easing.js"></script>
+    <title>东师之声NUNE</title>
+    <meta charset="utf-8">
+    <!-- Google Fonts -->
+    <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'
+        rel='stylesheet' type='text/css' />
+    <!-- CSS Files -->
+    <link rel="stylesheet" type="text/css" media="screen" href="../../Content/css/style.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="../../Content/menu/css/simple_menu.css">
+    <!-- JS Files -->
+    <script type="text/javascript" src="../../Content/js/jquery.min.js"></script>
+    <script type="text/javascript" src="../../Content/js/jquery.tools.min.js"></script>
     <script type="text/javascript">
-        jQuery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+        $(function () {
+            $("#prod_nav ul").tabs("#panes > div", {
+                effect: 'fade',
+                fadeOutSpeed: 400
             });
         });
     </script>
-    <script src="../../Scripts/wow.min.js"></script>
-    <script>
-        new WOW().init();
-    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".pane-list li").click(function () {
+                window.location = $(this).find("a").attr("href");
+                return false;
+            });
+        });
+    </script> 
 </head>
 <body>
-    <!--banner-->
-    <div class="banner">
-        <!--header-->
-        <div class="banner-text">
-            <div class="logo">
-                <a href="#">
-                    <img src="../../Content/images/logo.png" alt="" /></a>
-            </div>
-            <div class="top-nav">
-                <ul class="nav1 cl-effect-1">
-                    <li><a href="#">首页</a></li>
-                    <li><a href="#about" class="scroll">关于我们</a></li>
-                    <li><a href="#products" class="scroll">节目单</a></li>
-                    <li><a href="#services" class="scroll">人员</a></li>
-                    <li><a href="#team" class="scroll">光影声色</a></li>
-                    <li><a href="#contact" class="scroll">视频主播</a></li>
-                </ul>
-            </div>
+    <div class="header">
+        <div id="site_title">
+            <a href="@Url.Content("~/Home/Index")">
+                <img src="../../Content/img/logo.png" alt=""></a>
         </div>
-        <!-- banner Slider starts Here -->
-        <script src="../../Scripts/responsiveslides.min.js"></script>
-        <script>
-            // You can also use "$(window).load(function() {"
-            $(function () {
-                // Slideshow 3
-                $("#slider3").responsiveSlides({
-                    auto: true,
-                    pager: false,
-                    nav: true,
-                    speed: 500,
-                    namespace: "callbacks",
-                    before: function () {
-                        $('.events').append("<li>before event fired.</li>");
-                    },
-                    after: function () {
-                        $('.events').append("<li>after event fired.</li>");
-                    }
-                });
-            });
-        </script>
-        <!--//End-slider-script -->
-        <div id="top" class="callbacks_container">
-            <ul class="rslides" id="slider3">
-                <li>
-                    <div class="banner2">
-                    </div>
-                </li>
-                <li>
-                    <div class="banner1">
-                    </div>
-                </li>
+        <!-- Main Menu -->
+        <ol id="menu">
+            <li class="active_menu_item"><a href="@Url.Content("~/Home/Index")">首页</a></li>
+            <li><a href="@Url.Content("~/Show/Index")">我们的节目</a>
+                <ol>
+                    <li><a href="@Url.Content("~/Show/PersonnelList")">制作人分类</a></li>
+                    <li><a href="@Url.Content("~/Show/SchedulesList")">节目表分类</a></li>
+                    <li><a href="@Url.Content("~/Show/TimeList")">时间分类</a></li>
+                </ol>
+                <li><a href="#">广播剧</a></li>
+            <li><a href="#">视频节目</a></li>
+            <li><a href="#">关于我们</a>
+                <ol>
+                    <li><a href="#">介绍</a></li>
+                    <li><a href="#">人员</a></li>
+                    <li><a href="#">节目表</a></li>
+                    <li><a href="#">历史</a></li>
+                    <li class="last"><a href="@Url.Content("~/Information/atlas")">图集</a></li>
+                </ol>
+            </li>
+        </ol>
+        <!-- END menu -->
+    </div>
+    <!-- 正文开始-->
+    <div id="container">
+        @RenderBody()
+    </div>
+    <!-- END container -->
+    <!-- 底部 信息栏-->
+    <div id="footer">
+        <!-- First Column -->
+        <div class="one-fourth">
+            <h3>
+                友情链接
+            </h3>
+            <ul class="footer_links">
+                <li><a href="#">荔枝FM</a></li>
+                <li><a href="#">喜马拉雅</a></li>
+                <li><a href="#">人人网</a></li>
+                <li><a href="#">新浪微博</a></li>
             </ul>
         </div>
+        <!-- Second Column -->
+        <div class="one-fourth">
+            <h3>
+                后台登陆</h3>
+            <ul class="footer_links">
+                <li><a href="#">后台管理员</a></li>
+            </ul>
+        </div>
+        <!-- Third Column -->
+        <div class="one-fourth">
+            <h3>
+                本主页
+            </h3>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet enim
+            id dui tincidunt vestibulum rhoncus a felis.
+            <div id="social_icons">
+                Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+        </div>
+        <!-- Fourth Column -->
+        <div class="one-fourth last">
+            <h3>
+                Socialize</h3>
+            <img src="../../Content/img/icon_fb.png" alt="">
+            <img src="../../Content/img/icon_twitter.png" alt="">
+            <img src="../../Content/img/icon_in.png" alt="">
+        </div>
+        <div style="clear: both">
+        </div>
     </div>
-    @RenderBody();
+    <!-- END footer -->
 </body>
-</html>
+</html> 
