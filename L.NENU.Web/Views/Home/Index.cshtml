@@ -1,5 +1,14 @@
 ﻿@{
     ViewBag.Title = "Index";
+    <!--引用jq-->
+    <script type="text/javascript">
+        $(function () {
+            $("#prod_nav ul").tabs("#panes > div", {
+                effect: 'fade',
+                fadeOutSpeed: 400
+            });
+        });
+    </script>
 }
 <!-- tab panes -->
 <div id="prod_wrapper">
@@ -7,7 +16,8 @@
         <div>
             <img src="../../Content/img/demo/1.jpg" alt="">
             <h1>
-                Welcome to our site</h1>
+                Welcome to our site
+            </h1>
             <p>
                 Nulla hendrerit commodo tortor, vitae elementum magna convallis nec. Nam tempor
                 nibh a purus aliquam et adipiscing elit gravida. Ut vitae nunc a libero volutpat

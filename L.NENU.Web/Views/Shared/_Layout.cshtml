@@ -1,25 +1,18 @@
 ﻿<!DOCTYPE HTML>
 <html>
 <head>
-    <title>东师之声NUNE</title>
+    @*浏览器标题 并未加入图片 *@ <title>东师之声NUNE</title>@*页面文档说明*@
     <meta charset="utf-8">
-    <!-- Google Fonts -->
-    <link href='http://fonts.useso.com/css?family=Open+Sans+Condensed:300|Playfair+Display:400italic'
-        rel='stylesheet' type='text/css' />
+    <link href="../../Content/css/MiancSS.css" rel="stylesheet" type="text/css" />
     <!-- CSS Files -->
     <link rel="stylesheet" type="text/css" media="screen" href="../../Content/css/style.css">
+    <!--基本样式表-->
     <link rel="stylesheet" type="text/css" media="screen" href="../../Content/menu/css/simple_menu.css">
+    <!--菜单样式表-->
     <!-- JS Files -->
     <script type="text/javascript" src="../../Content/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../Content/js/jquery.tools.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $("#prod_nav ul").tabs("#panes > div", {
-                effect: 'fade',
-                fadeOutSpeed: 400
-            });
-        });
-    </script>
+
     <script type="text/javascript">
         $(document).ready(function () {
             $(".pane-list li").click(function () {
@@ -27,13 +20,15 @@
                 return false;
             });
         });
-    </script> 
+    </script>
 </head>
+<!--模板正文-->
 <body>
     <div class="header">
         <div id="site_title">
             <a href="@Url.Content("~/Home/Index")">
-                <img src="../../Content/img/logo.png" alt=""></a>
+                <img src="../../Content/img/logo.png" alt="">
+            </a>
         </div>
         <!-- Main Menu -->
         <ol id="menu">
@@ -71,10 +66,10 @@
                 友情链接
             </h3>
             <ul class="footer_links">
-                <li><a href="#">荔枝FM</a></li>
-                <li><a href="#">喜马拉雅</a></li>
+                <li><a href="http://www.lizhi.fm/201106/">荔枝FM</a></li>
+                <li><a href="http://www.ximalaya.com/zhubo/24957152/">喜马拉雅</a></li>
                 <li><a href="#">人人网</a></li>
-                <li><a href="#">新浪微博</a></li>
+                <li><a href="http://weibo.com/u/5549779623?refer_flag=1001030103_&is_hot=1">新浪微博</a></li>
             </ul>
         </div>
         <!-- Second Column -->
@@ -90,22 +85,23 @@
             <h3>
                 本主页
             </h3>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sit amet enim
-            id dui tincidunt vestibulum rhoncus a felis.
+            本站为留声东师NUNE校园广播站的官方网站,由于正在测试中,服务器不太稳定,见谅!
             <div id="social_icons">
-                Copyright &copy; 2015.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+                Copyright &copy; 2015.Company 林 All rights reserved.
+            </div>
         </div>
         <!-- Fourth Column -->
         <div class="one-fourth last">
             <h3>
-                Socialize</h3>
-            <img src="../../Content/img/icon_fb.png" alt="">
+                Socialize
+            </h3>
+@*          <img src="../../Content/img/icon_fb.png" alt="">
             <img src="../../Content/img/icon_twitter.png" alt="">
-            <img src="../../Content/img/icon_in.png" alt="">
+            <img src="../../Content/img/icon_in.png" alt="">*@
         </div>
         <div style="clear: both">
         </div>
     </div>
     <!-- END footer -->
 </body>
-</html> 
+</html>

@@ -88,6 +88,7 @@
     <Content Include="Content\contact-form\images\textarea-bg.png" />
     <Content Include="Content\css\demo.css" />
     <Content Include="Content\css\gridNavigation.css" />
+    <Content Include="Content\css\MiancSS.css" />
     <Content Include="Content\css\nivo-slider.css" />
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\supersized.css" />
