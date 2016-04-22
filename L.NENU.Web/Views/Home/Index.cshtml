@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IList<L.NENU.Domain.ShowInfo>
+@{
     ViewBag.Title = "Index";
     <!--引用jq-->
     <script type="text/javascript">
@@ -13,72 +14,21 @@
 <!-- tab panes -->
 <div id="prod_wrapper">
     <div id="panes">
-        <div>
-            <img src="../../Content/img/demo/1.jpg" alt="">
-            <h1>
-                Welcome to our site
-            </h1>
-            <p>
-                Nulla hendrerit commodo tortor, vitae elementum magna convallis nec. Nam tempor
-                nibh a purus aliquam et adipiscing elit gravida. Ut vitae nunc a libero volutpat
-                gravida. Nullam egestas mi sit amet dui scelerisque eu laoreet nisi ultrices. Ut
-                vitae nunc a libero volutpat gravida. Nam tempor nibh a purus aliquam.
-            </p>
-            <p style="text-align: right; margin-right: 16px">
-                <a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
-        </div>
-        <div>
-            <img src="../../Content/img/demo/2.jpg" alt="">
-            <h2>
-                Meet Our Team</h2>
-            <p>
-                Nulla hendrerit commodo tortor, vitae elementum magna convallis nec. Nam tempor
-                nibh a purus aliquam et adipiscing elit gravida. Ut vitae nunc a libero volutpat
-                gravida. Nullam egestas mi sit amet dui scelerisque eu laoreet nisi ultrices. Ut
-                vitae nunc a libero volutpat gravida. Nam tempor nibh a purus aliquam.
-            </p>
-            <p style="text-align: right; margin-right: 16px">
-                <a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
-        </div>
-        <div>
-            <img src="../../Content/img/demo/3.jpg" alt="">
-            <h2>
-                Mauris elementum</h2>
-            <p>
-                Nulla hendrerit commodo tortor, vitae elementum magna convallis nec. Nam tempor
-                nibh a purus aliquam et adipiscing elit gravida. Ut vitae nunc a libero volutpat
-                gravida. Nullam egestas mi sit amet dui scelerisque eu laoreet nisi ultrices. Ut
-                vitae nunc a libero volutpat gravida. Nam tempor nibh a purus aliquam.
-            </p>
-            <p style="text-align: right; margin-right: 16px">
-                <a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
-        </div>
-        <div>
-            <img src="../../Content/img/demo/4.jpg" alt="">
-            <h2>
-                Nam tempor nibh</h2>
-            <p>
-                Nulla hendrerit commodo tortor, vitae elementum magna convallis nec. Nam tempor
-                nibh a purus aliquam et adipiscing elit gravida. Ut vitae nunc a libero volutpat
-                gravida. Nullam egestas mi sit amet dui scelerisque eu laoreet nisi ultrices. Ut
-                vitae nunc a libero volutpat gravida. Nam tempor nibh a purus aliquam.
-            </p>
-            <p style="text-align: right; margin-right: 16px">
-                <a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
-        </div>
-        <div>
-            <img src="../../Content/img/demo/5.jpg" alt="">
-            <h2>
-                Supercar</h2>
-            <p>
-                Nulla hendrerit commodo tortor, vitae elementum magna convallis nec. Nam tempor
-                nibh a purus aliquam et adipiscing elit gravida. Ut vitae nunc a libero volutpat
-                gravida. Nullam egestas mi sit amet dui scelerisque eu laoreet nisi ultrices. Ut
-                vitae nunc a libero volutpat gravida. Nam tempor nibh a purus aliquam.
-            </p>
-            <p style="text-align: right; margin-right: 16px">
-                <a href="#" class="button">More Info</a> <a href="#" class="button">Buy Now</a></p>
-        </div>
+        @foreach (var item in Model)
+        { 
+            <div>
+                <img src="@item.ImgUrl" alt="" width="465" height="300">
+                <h1>
+                    @item.ShowTitle
+                </h1>
+                <p>
+                    @item.intro
+                </p>
+                <p style="text-align: right; margin-right: 16px">
+                    <a href="@item.HtmlUrl" class="button">More Info</a> <a href="#" class="button">Buy
+                        Now</a></p>
+            </div>
+        }
     </div>
     <!-- END tab panes -->
     <div style="clear: both">
@@ -86,19 +36,14 @@
     <!-- navigator -->
     <div id="prod_nav">
         <ul>
-            <li><a href="#1">
-                <img src="../../Content/img/demo/1.jpg" width="160" alt=""><strong>展示节目1</strong>
-                21:20:19</a></li>
-            <li><a href="#2">
-                <img src="../../Content/img/demo/2.jpg" width="160" alt=""><strong>展示节目1</strong>
-                21:20:19</a></li>
-            <li><a href="#3">
-                <img src="../../Content/img/demo/3.jpg" width="160" alt=""><strong>展示节目1</strong>21:20:19</a></li>
-            <li><a href="#4">
-                <img src="../../Content/img/demo/4.jpg" width="160" alt=""><strong>展示节目1</strong>
-                21:20:19</a></li>
-            <li><a href="#5">
-                <img src="../../Content/img/demo/5.jpg" width="160" alt=""><strong>展示节目1</strong>21:20:19</a></li>
+            @foreach (var item in Model)
+            {
+                int i = 1;
+                <li><a href="#@i">
+                    <img src="@item.ImgUrl" width="160" height="103" alt="">
+                    <strong>@item.ShowTitle</strong>@item.ShowTime</a> </li>
+                i++;
+            }
         </ul>
     </div>
     <!-- END navigator -->

@@ -42,6 +42,13 @@
   <ItemGroup>
     <Compile Include="IDoWeiXinChat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShowInfoService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\L.NENU.Domain\L.NENU.Domain.csproj">
+      <Project>{36E841BA-DF9E-47B6-9620-6C925B31374F}</Project>
+      <Name>L.NENU.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

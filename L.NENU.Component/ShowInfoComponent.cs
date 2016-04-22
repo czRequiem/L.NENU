@@ -5,10 +5,11 @@ using System.Text;
 using L.NENU.Domain;
 using L.NENU.Domain.Send;
 using L.NENU.Manager;
+using L.NENU.Service;
 
 namespace L.NENU.Component
 {
-    public class ShowInfoComponent
+    public class ShowInfoComponent : ShowInfoService
     {
 
 
@@ -50,6 +51,21 @@ namespace L.NENU.Component
             }
 
             return listNews;
+        }
+
+
+
+        /// <summary>
+        /// 返回showinfo表中最新的数据前五条
+        /// </summary>
+        /// <returns></returns>
+        public IList<ShowInfo> GetShowInfoByTop5()
+        {
+            ShowInfoManager m = new ShowInfoManager();
+            IList<ShowInfo> list = m.GetShowInfoByTop5();
+
+            return list;
+        
         }
     }
 }

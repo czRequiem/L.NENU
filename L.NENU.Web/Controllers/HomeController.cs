@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using L.NENU.Service;
+using L.NENU.Component;
+using L.NENU.Domain;
 
 namespace L.NUNE.Controllers
 {
@@ -13,7 +16,9 @@ namespace L.NUNE.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            ShowInfoService ss = new ShowInfoComponent();
+            IList<ShowInfo> list = ss.GetShowInfoByTop5();
+            return View(list);
         }
 
     }

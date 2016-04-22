@@ -21,5 +21,7 @@ namespace L.NENU.Domain
 
         public string ImgUrl { get; set; }
 
+        public string CreateTheHost { get; set; }
+
     }
 }
