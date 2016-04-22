@@ -11,7 +11,9 @@ namespace L.NENU.Manager
         #region 连接属性或者字段
         
         //数据库访问字符串
-        private static string connString = "Data Source=.;Initial Catalog=L.NENU.ZZX;Integrated Security=True;";
+        //private static string connString = "Data Source=.;Initial Catalog=L.NENU.ZZX;Integrated Security=True;";
+
+        private static string connString = "Server=c05ad13b-3522-48ae-9580-a5e800e16618.sqlserver.sequelizer.com;Database=dbc05ad13b352248ae9580a5e800e16618;User ID=wfvbyrunamrtcauy;Password=S3sjFFbiavuemrJqznZ3mPUvMerVFZ7hDSi6M3EwkQdJtRtS3zt2i5Tdg6EAonJi;";
 
         /// <summary>
         ///数据库访问字符串
