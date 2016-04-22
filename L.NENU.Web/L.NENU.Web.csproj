@@ -73,7 +73,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\2016年4月22日数据导入.sql" />
     <Content Include="Content\boxes\css\style5.css" />
     <Content Include="Content\boxes\css\style6.css" />
     <Content Include="Content\boxes\css\websymbols\websymbols-regular-webfont.svg" />
@@ -368,6 +367,7 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
