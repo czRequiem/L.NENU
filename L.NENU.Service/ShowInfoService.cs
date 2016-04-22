@@ -9,5 +9,7 @@ namespace L.NENU.Service
     public interface ShowInfoService
     {
         IList<ShowInfo> GetShowInfoByTop5();
+
+        //List<ShowInfo> 
     }
 }

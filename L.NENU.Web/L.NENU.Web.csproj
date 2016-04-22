@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.ActiveRecord">
+      <HintPath>..\L.NENU.Libs\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
@@ -66,6 +69,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\ShowController.cs" />
+    <Compile Include="Controllers\ShowInfoMController.cs" />
     <Compile Include="Controllers\TheCoreController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -73,6 +77,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Configuration\LMSConfiguration.xml" />
     <Content Include="Content\boxes\css\style5.css" />
     <Content Include="Content\boxes\css\style6.css" />
     <Content Include="Content\boxes\css\websymbols\websymbols-regular-webfont.svg" />

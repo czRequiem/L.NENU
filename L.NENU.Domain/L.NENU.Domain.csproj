@@ -31,8 +31,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.ActiveRecord">
+      <HintPath>..\L.NENU.Libs\Castle.ActiveRecord.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -40,7 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AlbumInfo.cs" />
+    <Compile Include="EntityBase.cs" />
+    <Compile Include="NoticeInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoleInfo.cs" />
     <Compile Include="Send\SImg.cs" />
     <Compile Include="Send\Smusic.cs" />
     <Compile Include="Send\SNews.cs" />
@@ -48,6 +57,7 @@
     <Compile Include="Send\SVideo.cs" />
     <Compile Include="Send\SVoice.cs" />
     <Compile Include="ShowInfo.cs" />
+    <Compile Include="TheHostInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

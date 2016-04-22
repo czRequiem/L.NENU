@@ -11,7 +11,7 @@ namespace L.NENU.Manager
         #region 连接属性或者字段
         
         //数据库访问字符串
-        private static string connString = System.Configuration.ConfigurationManager.ConnectionStrings["NENUConnection"].ConnectionString;  //需要添加system.configuration命名空间的引用
+        private static string connString = "Data Source=.;Initial Catalog=L.NENU.ZZX;Integrated Security=True;";
 
         /// <summary>
         ///数据库访问字符串

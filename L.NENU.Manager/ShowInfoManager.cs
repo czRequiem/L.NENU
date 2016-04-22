@@ -8,7 +8,7 @@ using System.Data;
 
 namespace L.NENU.Manager
 {
-    public class ShowInfoManager
+    public class ShowInfoManager:ManagerBase<ShowInfo>
     {
         public IList<ShowInfo> GetShowInfoBy(ShowInfo showInfo)
         {
@@ -61,6 +61,8 @@ namespace L.NENU.Manager
         /// <returns></returns>
         public IList<ShowInfo> GetShowInfoByTop5()
         {
+
+            
             //准备存储过程名字
             string sql = "sp_ShowInfo_TheHost_BYTop5";
 
@@ -78,7 +80,6 @@ namespace L.NENU.Manager
                 s.ShowTime = reader["ShowTime"].ToString();
                 s.HtmlUrl = reader["HtmlUrl"].ToString();
                 s.ImgUrl = reader["ImgUrl"].ToString();
-                s.CreateTheHost = reader["username"].ToString();
 
                 list.Add(s);
             }
