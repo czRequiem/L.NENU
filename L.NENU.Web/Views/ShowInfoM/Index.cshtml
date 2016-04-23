@@ -1,0 +1,100 @@
+﻿@using L.NENU.Web.Apps;
+@model  PageList<L.NENU.Domain.ShowInfo>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutM.cshtml";
+    <style>
+        .tbl
+        {
+            table-layout: fixed;
+        }
+        .td 
+        {
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+    
+}
+<h2>
+    节目信息表</h2>
+<p>
+    @Html.ActionLink("发布一个新的节目", "Create")
+</p>
+<table style="width: 950px;" class="tbl">
+    <tr>
+        <th class="td" style="width: 75px;">
+            节目编号
+        </th>
+        <th style="width: 150px;" class="td">
+            节目标题
+        </th>
+        <th class="td" style="width: 75px;">
+            创建时间
+        </th>
+        <th class="td" style="width: 50px;">
+            创建人
+        </th>
+        
+        <th class="td" style="width: 50px;">
+            介绍
+        </th>
+        <th class="td" style="width: 50px;">
+            荔枝地址
+        </th>
+        <th class="td" style="width: 50px;">
+            微信地址
+        </th>
+        <th class="td">
+            操作
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShowTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
+            </td>
+            <td>
+                不存在
+            </td>
+            <td>
+                @if (item.intro != "")
+                {
+                    @:存在
+                     }
+                else
+                {
+                    @:不存在
+                                                                            }
+            </td>
+            <td>
+                @if (item.HtmlUrl != "")
+                {
+                    @:存在
+                     }
+                else
+                {
+                    @:不存在
+                                                                            }
+            </td>
+            <td>
+                不存在
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("详细信息", "Details", new { id = item.ID }) |
+                @Html.ActionLink("删除", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+</table>
+<div class="pager">
+    @Html.Raw(Html.Pager(Model.PageIndex, Model.PageSize, Model.TotalCount, Model.PageIndex));
+</div>

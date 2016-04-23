@@ -1,0 +1,127 @@
+﻿@model L.NENU.Domain.ShowInfo
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutM.cshtml";
+    
+    <link rel="stylesheet" href="../../Content/css/nivo-slider.css" type="text/css" media="screen" />
+    <link href="../../Content/contact-form/css/style.css" media="screen" rel="stylesheet"
+        type="text/css" />
+    <link href="../../Content/contact-form/css/uniform.css" media="screen" rel="stylesheet"
+        type="text/css" />
+    
+    var AlbumIfoList = ViewBag.AlbumIfoList as IList<L.NENU.Domain.AlbumInfo>;
+    var TheHostList = ViewBag.TheHostList as IList<L.NENU.Domain.TheHostInfo>;
+}
+<h2>
+    创建一个新的节目 下列所有列必须填写</h2>
+<form action="#" class="TTWForm" method="post" id="myFrom">
+<fieldset>
+    <legend>ShowInfo</legend>
+    <table style="width: 900px;">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Album)
+            </td>
+            <td>
+                <select id="albuminfolsit">
+                    @foreach (var al in AlbumIfoList)
+                    {
+                        <option value="@al.ID">@al.Name</option>
+                    }
+                </select>
+            </td>
+            <td style="width: 75px;">
+                @Html.LabelFor(model => model.Number)
+            </td>
+            <td>
+                @Html.EditorFor(model => model.Number)
+                @Html.ValidationMessageFor(model => model.Number)
+            </td>
+        </tr>
+        <tr style="">
+            <td style="width: 75px;">
+                @Html.LabelFor(model => model.ShowTitle)
+            </td>
+            <td colspan="3">
+                @Html.EditorFor(model => model.ShowTitle)
+                @Html.ValidationMessageFor(model => model.ShowTitle)
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 75px;">
+                @Html.LabelFor(model => model.intro)
+            </td>
+            <td colspan="3">
+                @Html.EditorFor(model => model.intro)
+                @Html.ValidationMessageFor(model => model.intro)
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 75px;">
+                @Html.LabelFor(model => model.HtmlUrl)
+            </td>
+            <td colspan="3">
+                @Html.EditorFor(model => model.HtmlUrl)
+                @Html.ValidationMessageFor(model => model.HtmlUrl)
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 75px;">
+                @Html.LabelFor(model => model.ImgUrl)
+            </td>
+            <td colspan="3">
+                @Html.EditorFor(model => model.ImgUrl)
+                @Html.ValidationMessageFor(model => model.ImgUrl)
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 75px;">
+                @Html.LabelFor(model => model.WeiChatUrl)
+            </td>
+            <td colspan="3">
+                @Html.EditorFor(model => model.WeiChatUrl)
+                @Html.ValidationMessageFor(model => model.WeiChatUrl)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                @foreach (var item in TheHostList)
+                { 
+                    <input type ="checkbox" name="TheHost" value="@item.ID" />@item.UserName
+                }
+            </td>
+        </tr>
+    </table>
+    @Html.HiddenFor(model => model.ID)
+    <input type="hidden" id="albumID" name="albumID"  />
+    <input type="hidden" id="TheHostID" name="TheHostID" />
+    <p>
+        <input type="button" value="Save" onclick="selectR()" />
+    </p>
+</fieldset>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+    function selectR() {
+        var myselect = document.getElementById("albuminfolsit");
+        var tmp1 = document.getElementById("albumID");
+        var tmp = myselect.value;
+        tmp1.value = tmp;
+        var obj = document.getElementsByName('TheHost');
+        var s = '';
+        for (var i = 0; i < obj.length; i++) {
+            if (obj[i].checked) s += obj[i].value + ','; //如果选中，将value添加到变量s中
+        }
+        //那么现在来检测s的值就知道选中的复选框的值了
+        if (s == "") {
+            alert("你还没有选择任何主播");
+            return false;
+        }
+        var tmp2 = document.getElementById("TheHostID");
+        tmp2.value = s;
+        var from = document.getElementById("myFrom");
+        from.submit();
+    }
+</script>

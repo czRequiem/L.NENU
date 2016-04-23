@@ -37,10 +37,55 @@
     <Reference Include="Castle.ActiveRecord">
       <HintPath>..\L.NENU.Libs\Castle.ActiveRecord.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.ActiveRecord.Web">
+      <HintPath>..\L.NENU.Libs\Castle.ActiveRecord.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Components.Validator, Version=2.5.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\L.NENU.Libs\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\L.NENU.Libs\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.ActiveRecordIntegration">
+      <HintPath>..\L.NENU.Libs\Castle.Facilities.ActiveRecordIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Facilities.AutoTx">
+      <HintPath>..\L.NENU.Libs\Castle.Facilities.AutoTx.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Services.Transaction">
+      <HintPath>..\L.NENU.Libs\Castle.Services.Transaction.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor, Version=2.5.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\L.NENU.Libs\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\L.NENU.Libs\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\L.NENU.Libs\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate">
+      <HintPath>..\L.NENU.Libs\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\L.NENU.Libs\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Search, Version=0.0.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\L.NENU.Libs\NHibernate.Search.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\L.NENU.Libs\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -65,12 +110,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apps\AppHelper.cs" />
+    <Compile Include="Apps\PageList.cs" />
+    <Compile Include="Apps\PagerHelper.cs" />
+    <Compile Include="Apps\RenderPager.cs" />
     <Compile Include="Apps\WeiXinChatFlow.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
     <Compile Include="Controllers\ShowController.cs" />
     <Compile Include="Controllers\ShowInfoMController.cs" />
     <Compile Include="Controllers\TheCoreController.cs" />
+    <Compile Include="Controllers\TheHostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -351,6 +401,7 @@
     </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -391,6 +442,10 @@
       <Project>{36E841BA-DF9E-47B6-9620-6C925B31374F}</Project>
       <Name>L.NENU.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\L.NENU.Manager\L.NENU.Manager.csproj">
+      <Project>{A42FC81B-F851-4180-B403-9279532C409B}</Project>
+      <Name>L.NENU.Manager</Name>
+    </ProjectReference>
     <ProjectReference Include="..\L.NENU.Service\L.NENU.Service.csproj">
       <Project>{04D68B77-D933-4B4E-9527-86C637B15F21}</Project>
       <Name>L.NENU.Service</Name>
@@ -409,6 +464,11 @@
     <Content Include="Views\Show\PersonnelList.cshtml" />
     <Content Include="Views\Show\SchedulesList.cshtml" />
     <Content Include="Views\Show\TimeList.cshtml" />
+    <Content Include="Views\Shared\_LayoutM.cshtml" />
+    <Content Include="Views\TheHost\Login.cshtml" />
+    <Content Include="Views\ShowInfoM\Index.cshtml" />
+    <Content Include="Views\ShowInfoM\Edit.cshtml" />
+    <Content Include="Views\ShowInfoM\Create.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -40,7 +40,7 @@ namespace L.NENU.Domain
         /// <summary>
         /// 节目集合  一对多关系 此处为多
         /// </summary>
-        [HasMany(typeof(ShowInfo), ColumnKey = "AlbumID", Cascade = ManyRelationCascadeEnum.None, Inverse = false, Lazy = false)]
+        [HasMany(typeof(ShowInfo), ColumnKey = "AlbumID", Cascade = ManyRelationCascadeEnum.None, Inverse = false)]
         public IList<ShowInfo> Show { get; set; }
 
 

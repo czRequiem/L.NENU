@@ -12,7 +12,6 @@
     <!-- JS Files -->
     <script type="text/javascript" src="../../Content/js/jquery.min.js"></script>
     <script type="text/javascript" src="../../Content/js/jquery.tools.min.js"></script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $(".pane-list li").click(function () {
@@ -33,14 +32,9 @@
         <!-- Main Menu -->
         <ol id="menu">
             <li class="active_menu_item"><a href="@Url.Content("~/Home/Index")">首页</a></li>
-            <li><a href="@Url.Content("~/Show/Index")">我们的节目</a>
-                <ol>
-                    <li><a href="@Url.Content("~/Show/PersonnelList")">制作人分类</a></li>
-                    <li><a href="@Url.Content("~/Show/SchedulesList")">节目表分类</a></li>
-                    <li><a href="@Url.Content("~/Show/TimeList")">时间分类</a></li>
-                </ol>
-                <li><a href="#">广播剧</a></li>
-            <li><a href="#">视频节目</a></li>
+            <li><a href="@Url.Content("~/Show/Index")">节目管理</a>
+            <li><a href="#">人员管理</a></li>
+            <li><a href="#">公告管理</a></li>
             <li><a href="#">关于我们</a>
                 <ol>
                     <li><a href="#">介绍</a></li>
@@ -78,6 +72,7 @@
                 后台登陆</h3>
             <ul class="footer_links">
                 <li><a href="@Url.Content("~/TheHost/Login")">后台管理员</a></li>
+                <li><a href="https://github.com/TombarthiteL/L.NENU"> GitHub项目源代码</a></li>
             </ul>
         </div>
         <!-- Third Column -->
@@ -95,7 +90,7 @@
             <h3>
                 Socialize
             </h3>
-@*          <img src="../../Content/img/icon_fb.png" alt="">
+            @*          <img src="../../Content/img/icon_fb.png" alt="">
             <img src="../../Content/img/icon_twitter.png" alt="">
             <img src="../../Content/img/icon_in.png" alt="">*@
         </div>

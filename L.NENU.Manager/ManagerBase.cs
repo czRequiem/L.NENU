@@ -183,6 +183,7 @@ namespace L.NENU.Manager
             //实例化一个hql查询语句对象
             StringBuilder hql = new StringBuilder(@"from" + typeof(T).Name + "d");
 
+           
             //根据查询条件构造hql查询语句
             for (int i = 0; i < queryConditions.Count; i++)
             {
@@ -193,7 +194,7 @@ namespace L.NENU.Manager
                     hql.Append(string.Format("d.{0} {1} :q_{2}", qc.PropertyName, qc.Operator, i));
                 }
             }
-
+            
             ISession session = ActiveRecordBase.holder.CreateSession(typeof(T));  //获取管理T的session对象
             IQuery query = session.CreateQuery(hql.ToString());  //获取满足条件的数据
             IQuery queryScalar = session.CreateQuery("select count(ID)" + hql.ToString());  //获取满足条件的数据总数
@@ -216,7 +217,7 @@ namespace L.NENU.Manager
                     query.SetParameter("q_" + i, qc.Value);
                 }
 
-
+                
             }
 
             IList<object> result = queryScalar.List<object>(); //执行查询条件总数的查询对象

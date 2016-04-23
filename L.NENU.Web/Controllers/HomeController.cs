@@ -16,7 +16,7 @@ namespace L.NUNE.Controllers
 
         public ActionResult Index()
         {
-            ShowInfoService ss = new ShowInfoComponent();
+            IShowInfoService ss = new ShowInfoComponent();
             IList<ShowInfo> list = ss.GetShowInfoByTop5();
             return View(list);
         }

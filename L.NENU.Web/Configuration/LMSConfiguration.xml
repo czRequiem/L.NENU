@@ -1,19 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <root>
-  <!--<element Id="IUserService" Service="ZDSoft28.LMS.Service.IUserService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.UserComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="ISystemFunctionService" Service="ZDSoft28.LMS.Service.ISystemFunctionService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.SystemFunctionComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="IRoleService" Service="ZDSoft28.LMS.Service.IRoleService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.RoleComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="ITransportOrderService" Service="ZDSoft28.LMS.Service.ITransportOrderService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.TransportOrderComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="ITransportOrderItemService" Service="ZDSoft28.LMS.Service.ITransportOrderItemService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.TransportOrderItemComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="ISystemSettingService" Service="ZDSoft28.LMS.Service.ISystemSettingService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.SystemSettingComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="IProvinceService" Service="ZDSoft28.LMS.Service.IProvinceService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.ProvinceComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="IVehicleService" Service="ZDSoft28.LMS.Service.IVehicleService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.VehicleComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="IDeliveryFormService" Service="ZDSoft28.LMS.Service.IDeliveryFormService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.DeliveryFormComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="IDriverService" Service="ZDSoft28.LMS.Service.IDriverService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.DriverComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="IBillingItemTypeService" Service="ZDSoft28.LMS.Service.IBillingItemTypeService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.BillingItemTypeComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="IBillingService" Service="ZDSoft28.LMS.Service.IBillingService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.BillingComponent, ZDSoft28.LMS.Component"></element>
-  <element Id="IAnalysisService" Service="ZDSoft28.LMS.Service.IAnalysisService, ZDSoft28.LMS.Service" Class="ZDSoft28.LMS.Component.AnalysisComponent, ZDSoft28.LMS.Component"></element>
-  
-  <element Id="ISystemnNewUserService" Service="ZDSoft.LMS.Service.ISystemnNewUserService, ZDSoft.LMS.Service" Class="ZDSoft.LMS.Component.SystemnNewUserComponent, ZDSoft.LMS.Component"></element>-->
+
+  <element Id="ITheHostInfoService" Service="L.NENU.Service.ITheHostInfoService, L.NENU.Service" Class="L.NENU.Component.TheHostInfoComponent,L.NENU.Component"></element>
+  <element Id="IShowInfoService" Service="L.NENU.Service.IShowInfoService, L.NENU.Service" Class="L.NENU.Component.ShowInfoComponent,L.NENU.Component"></element>
+  <element Id="IAlbumInfoService" Service="L.NENU.Service.IAlbumInfoService, L.NENU.Service" Class="L.NENU.Component.AlbumInfoComponent,L.NENU.Component"></element>
 </root>

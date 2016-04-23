@@ -11,7 +11,7 @@ namespace L.NENU.Domain
     /// <summary>
     /// 主播信息类
     /// </summary>
-    [ActiveRecord("ShowInfo")]
+    [ActiveRecord("TheHostInfo")]
     public class TheHostInfo : EntityBase
     {
 
@@ -113,7 +113,7 @@ namespace L.NENU.Domain
         [HasAndBelongsToMany(typeof(ShowInfo),
             Table = "Show_TheHost_Info",
             ColumnKey = "TheHostInfoID",
-            ColumnRef = "SystemFunctionID",
+            ColumnRef = "ShowInfoID",
             Cascade = ManyRelationCascadeEnum.All,
             Inverse = false,
             Lazy = false)]

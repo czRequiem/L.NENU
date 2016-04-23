@@ -21,7 +21,7 @@ namespace L.NENU.Domain
         /// </summary>
         [Property(NotNull = true)]
         [Required]
-        [Display(Name = "Counter")]
+        [Display(Name = "节目编号")]
         public int Number { get; set; }
 
         /// <summary>
@@ -59,22 +59,32 @@ namespace L.NENU.Domain
         public string intro { get; set; }
 
         /// <summary>
-        /// 节目播放地址
+        /// 播放地址
         /// </summary>
         [Property(NotNull = true, Length = 200)]
         [Required(ErrorMessage = "不能为空")]
         [StringLength(200, ErrorMessage = "不能超过200个字符")]
-        [Display(Name = "节目播放地址")]
+        [Display(Name = "播放地址")]
         public string HtmlUrl { get; set; }
 
         /// <summary>
-        /// 节目图片地址
+        /// 图片地址
         /// </summary>
         [Property(NotNull = true, Length = 200)]
         [Required(ErrorMessage = "不能为空")]
         [StringLength(200, ErrorMessage = "不能超过200个字符")]
-        [Display(Name = "节目图片地址")]
+        [Display(Name = "图片地址")]
         public string ImgUrl { get; set; }
+
+
+        /// <summary>
+        /// 图片地址
+        /// </summary>
+        [Property(NotNull = true, Length = 200)]
+        [Required(ErrorMessage = "不能为空")]
+        [StringLength(200, ErrorMessage = "不能超过200个字符")]
+        [Display(Name = "微信地址")]
+        public string WeiChatUrl { get; set; }
 
         #endregion
 
@@ -91,9 +101,9 @@ namespace L.NENU.Domain
         /// </summary>
         [HasAndBelongsToMany(typeof(TheHostInfo),
             Table = "Show_TheHost_Info",
-            ColumnKey = "SystemFunctionID",
+            ColumnKey = "ShowInfoID",
             ColumnRef = "TheHostInfoID",
-            Cascade = ManyRelationCascadeEnum.All,
+            Cascade = ManyRelationCascadeEnum.None,
             Inverse = false,
             Lazy = false)]
         public IList<TheHostInfo> TheHostInfo { get; set; }
