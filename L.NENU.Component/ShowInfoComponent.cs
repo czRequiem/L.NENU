@@ -118,5 +118,12 @@ namespace L.NENU.Component
 
             manager.Update(show);
         }
+
+
+        public void Update(ShowInfo showInfo, string TheHostID)
+        {
+            manager.Update(showInfo);
+            CreateTheHostList(showInfo.ID,TheHostID);
+        }
     }
 }

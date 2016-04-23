@@ -47,6 +47,16 @@ namespace L.NENU.Component
             return manager.GetAll();
         }
 
+        /// <summary>
+        /// 利用该数据的实体 删除数据库中对应的数据
+        /// </summary>
+        /// <param name="t">数据实体</param>
+        public void Delete(T t)
+        {
+            manager.Delete(t);
+        }
+
+
         #region  分页控件
         /// <summary>
         /// 

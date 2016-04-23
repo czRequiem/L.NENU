@@ -10,6 +10,7 @@
     
     var AlbumIfoList = ViewBag.AlbumIfoList as IList<L.NENU.Domain.AlbumInfo>;
     var TheHostList = ViewBag.TheHostList as IList<L.NENU.Domain.TheHostInfo>;
+    var TheHostID = ViewBag.TheHostID as string;
 }
 <h2>
     Edit</h2>
@@ -92,9 +93,9 @@
         </tr>
     </table>
     @Html.HiddenFor(model => model.ID)
-    <input type="hidden" id="albumID" name="albumID" value=" @if (Model.Album != null)
+    <input type="hidden" id="albumID" name="albumID" value=" @if (Model.Album!=null)
                                                              {@Model.Album.ID}" />
-    <input type="hidden" id="TheHostID" name="TheHostID" />
+    <input type="hidden" id="TheHostID" name="TheHostID" value="@TheHostID"/>
     <p>
         <input type="button" value="Save" onclick="selectR()" />
     </p>
@@ -103,12 +104,28 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+<!--类似于页面创建的代码 只不过增加了自动复制的语句 在select中 始终无法自动选取固定值 此问题正在研究中-->
+<!-- 2016年4月23日 22:19:01 林-->
 <script type="text/javascript">
     $(document).ready(function () {
         var al = document.getElementById("albumID");
         var alv = al.value;
         var aa = document.getElementById("albuminfolsit");
         aa[0].value = alv;
+
+        //设置复选框默认选中
+        var val = document.getElementById("TheHostID").value.split(",");
+        var boxes = document.getElementsByName("TheHost");
+        for (i = 0; i < boxes.length; i++) {
+            for (j = 0; j < val.length; j++) {
+                if (boxes[i].value == val[j]) {
+                    boxes[i].checked = true;
+                    break
+                }
+            }
+        }
+
     });
 
 

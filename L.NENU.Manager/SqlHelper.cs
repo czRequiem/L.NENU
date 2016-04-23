@@ -9,10 +9,9 @@ namespace L.NENU.Manager
     public class SqlHelper
     {
         #region 连接属性或者字段
-        
+
         //数据库访问字符串
         //private static string connString = "Data Source=.;Initial Catalog=L.NENU.ZZX;Integrated Security=True;";
-
         private static string connString = "Server=c05ad13b-3522-48ae-9580-a5e800e16618.sqlserver.sequelizer.com;Database=dbc05ad13b352248ae9580a5e800e16618;User ID=wfvbyrunamrtcauy;Password=S3sjFFbiavuemrJqznZ3mPUvMerVFZ7hDSi6M3EwkQdJtRtS3zt2i5Tdg6EAonJi;";
 
         /// <summary>
@@ -35,7 +34,7 @@ namespace L.NENU.Manager
         {
             SqlConnection conn = new SqlConnection(connString);  //输入连接字符串进行连接
             conn.Open();  //开启连接
-            return conn ; 
+            return conn;
         }
 
 
@@ -48,7 +47,7 @@ namespace L.NENU.Manager
         /// <param name="commandText">sql语句或存储过程</param>
         /// <param name="parames">参数，可以为空</param>
         /// <returns></returns>
-        public static int ExecuteNonQuery(CommandType cmdType , string commandText , params SqlParameter[] parames)
+        public static int ExecuteNonQuery(CommandType cmdType, string commandText, params SqlParameter[] parames)
         {
             using (SqlConnection conn = GetConnection())
             {
@@ -56,17 +55,17 @@ namespace L.NENU.Manager
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;  //指定数据库的链接对象
                 cmd.CommandType = cmdType; // 指定Sql代码的类型
-                
+
                 //组织SQL语句
                 cmd.CommandText = commandText;
-                if(parames !=null)  //判断参数是否为空 是否添加参数
+                if (parames != null)  //判断参数是否为空 是否添加参数
                 {
                     cmd.Parameters.AddRange(parames);
                 }
 
                 //执行数据库的添加 修改 删除操作命令 并返回影响数据的行数
                 int roCwount = cmd.ExecuteNonQuery();//执行修改操作
-                return roCwount; 
+                return roCwount;
             }
         }
 
@@ -107,7 +106,7 @@ namespace L.NENU.Manager
         /// <param name="commandText">查询的SQL语句或存储过程</param>
         /// <param name="parames">参数</param>
         /// <returns>查询并返回单个值</returns>
-        public static  object ExecuteScalar(CommandType cmdType, string commandText, params SqlParameter[] parames)
+        public static object ExecuteScalar(CommandType cmdType, string commandText, params SqlParameter[] parames)
         {
             using (SqlConnection conn = GetConnection())
             {

@@ -13,7 +13,8 @@
     var TheHostList = ViewBag.TheHostList as IList<L.NENU.Domain.TheHostInfo>;
 }
 <h2>
-    创建一个新的节目 下列所有列必须填写</h2>
+    创建一个新的节目 下列所有列必须填写
+</h2>
 <form action="#" class="TTWForm" method="post" id="myFrom">
 <fieldset>
     <legend>ShowInfo</legend>
@@ -93,7 +94,7 @@
         </tr>
     </table>
     @Html.HiddenFor(model => model.ID)
-    <input type="hidden" id="albumID" name="albumID"  />
+    <input type="hidden" id="albumID" name="albumID" />
     <input type="hidden" id="TheHostID" name="TheHostID" />
     <p>
         <input type="button" value="Save" onclick="selectR()" />
@@ -103,13 +104,16 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-<script>
+<!-- 页面专辑信息封装保存到隐藏的按钮中  2016年4月23日 21:55:50 林-->
+<script type="text/javascript">
+    //在创建史点击保存触发 用于页面隐藏传值
     function selectR() {
-        var myselect = document.getElementById("albuminfolsit");
-        var tmp1 = document.getElementById("albumID");
+        var myselect = document.getElementById("albuminfolsit");  //获取专辑的select控件
+        var tmp1 = document.getElementById("albumID");  //获取专辑id隐藏按钮
         var tmp = myselect.value;
-        tmp1.value = tmp;
-        var obj = document.getElementsByName('TheHost');
+        tmp1.value = tmp;   //将值保存到隐藏按钮当中
+
+        var obj = document.getElementsByName("TheHost");  //获取创建人复选框集合
         var s = '';
         for (var i = 0; i < obj.length; i++) {
             if (obj[i].checked) s += obj[i].value + ','; //如果选中，将value添加到变量s中
@@ -119,9 +123,9 @@
             alert("你还没有选择任何主播");
             return false;
         }
-        var tmp2 = document.getElementById("TheHostID");
-        tmp2.value = s;
+        var tmp2 = document.getElementById("TheHostID");  //获取隐藏按钮
+        tmp2.value = s;  //填入值
         var from = document.getElementById("myFrom");
-        from.submit();
+        from.submit();  //提交表单
     }
 </script>

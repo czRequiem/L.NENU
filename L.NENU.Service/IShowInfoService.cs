@@ -40,5 +40,10 @@ namespace L.NENU.Service
         /// <param name="showinfo">节目信息实体</param>
         /// <param name="TheHostID">创建人ID字符串集合</param>
         void Create(ShowInfo showinfo, string TheHostID);
+
+        void Update(ShowInfo showInfo, string TheHostID);
+
+
+        void Delete(ShowInfo showInfo);
     }
 }

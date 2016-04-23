@@ -90,7 +90,7 @@
             <td>
                 @Html.ActionLink("修改", "Edit", new { id = item.ID }) |
                 @Html.ActionLink("详细信息", "Details", new { id = item.ID }) |
-                @Html.ActionLink("删除", "Delete", new { id = item.ID })
+                @Html.ActionLink("删除", "Delete", new { id = item.ID }, new { onclick = "return confirm('确认删除?删除后将不可恢复')" })
             </td>
         </tr>
     }
