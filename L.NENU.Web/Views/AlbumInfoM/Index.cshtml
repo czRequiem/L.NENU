@@ -1,0 +1,43 @@
+﻿@model IEnumerable<L.NENU.Domain.AlbumInfo>
+
+@{
+    ViewBag.Title = "节目单";
+    Layout = "~/Views/Shared/_LayoutM.cshtml";
+}
+
+<h2>节目单 请保证该节目单里面没有任何节目的时候才能删除</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            节目名
+        </th>
+        <th style=" width:300px;">
+            节目介绍
+        </th>
+        <th>操作</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Introduce)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateTime)
+        </td>
+        <td>
+            @Html.ActionLink("修改信息", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("查看该节目表所有节目", "Details", new { id=item.ID }) |
+            @Html.ActionLink("删除该节目表", "Delete", new { id = item.ID }, new { onclick = "return confirm('确认删除?删除后将不可恢复')" })
+        </td>
+    </tr>
+}
+
+</table>

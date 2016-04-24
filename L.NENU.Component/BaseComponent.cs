@@ -56,6 +56,23 @@ namespace L.NENU.Component
             manager.Delete(t);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t"></param>
+        public virtual void Update(T t)
+        {
+            manager.Update(t);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="t"></param>
+        public virtual void Create(T t)
+        {
+            manager.Create(t);
+        }
 
         #region  分页控件
         /// <summary>

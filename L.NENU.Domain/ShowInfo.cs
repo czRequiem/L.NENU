@@ -78,9 +78,9 @@ namespace L.NENU.Domain
 
 
         /// <summary>
-        /// 图片地址
+        /// 微信地址
         /// </summary>
-        [Property(NotNull = true, Length = 200)]
+        [Property(Length = 200)]
         [Required(ErrorMessage = "不能为空")]
         [StringLength(200, ErrorMessage = "不能超过200个字符")]
         [Display(Name = "微信地址")]

@@ -1,0 +1,44 @@
+﻿@model L.NENU.Domain.AlbumInfo
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutM.cshtml";
+    <link rel="stylesheet" href="../../Content/css/nivo-slider.css" type="text/css" media="screen" />
+    <link href="../../Content/contact-form/css/style.css" media="screen" rel="stylesheet"
+        type="text/css" />
+    <link href="../../Content/contact-form/css/uniform.css" media="screen" rel="stylesheet"
+        type="text/css" />
+}
+<h2>
+    Create</h2>
+<form action="#" class="TTWForm" method="post" id="myFrom">
+<fieldset>
+    <legend>创建节目单</legend>
+    <table style="width: 900px;">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Name)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Introduce)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.Introduce)
+                @Html.ValidationMessageFor(model => model.Introduce)
+            </td>
+        </tr>
+    </table>
+    @Html.HiddenFor(model => model.ID)
+    <p>
+        <input type="submit" value="保存" />
+    </p>
+</fieldset>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

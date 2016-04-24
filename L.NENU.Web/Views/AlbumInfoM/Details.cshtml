@@ -1,27 +1,14 @@
-﻿@using L.NENU.Web.Apps;
-@model  PageList<L.NENU.Domain.ShowInfo>
+﻿@model L.NENU.Domain.AlbumInfo
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutM.cshtml";
-    <style>
-        .tbl
-        {
-            table-layout: fixed;
-        }
-        .td
-        {
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    </style>
-    
+
+    var ShowInfoList = ViewBag.ShowInfoList as IList<L.NENU.Domain.ShowInfo>;
 }
-<h2>
-    节目信息表</h2>
-<p>
-    @Html.ActionLink("发布一个新的节目", "Create") @Html.ActionLink("管理节目单信息", "../AlbumInfoM/Index")
-</p>
-<table style="width: 950px;" class="tbl">
+
+<h2>@Model.Name 节目单所有节目</h2>
+    <table style="width: 950px;" class="tbl">
     <tr>
         <th class="td" style="width: 75px;">
             节目编号
@@ -48,7 +35,8 @@
             操作
         </th>
     </tr>
-    @foreach (var item in Model)
+
+@foreach (var item in ShowInfoList)
     {
         <tr>
             <td>
@@ -101,13 +89,12 @@
                                     }
             </td>
             <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("详细信息", "Details", new { id = item.ID }) |
-                @Html.ActionLink("删除", "Delete", new { id = item.ID }, new { onclick = "return confirm('确认删除?删除后将不可恢复')" })
+                @Html.ActionLink("修改", "../ShowInfoM/Edit", new { id = item.ID }) |
+                @Html.ActionLink("详细信息", "../ShowInfoM/Details", new { id = item.ID }) |
+                @Html.ActionLink("删除", "../ShowInfoM/Delete", new { id = item.ID }, new { onclick = "return confirm('确认删除?删除后将不可恢复')" })
             </td>
         </tr>
     }
+
+    
 </table>
-<div class="pager">
-    @Html.Raw(Html.Pager(Model.PageIndex, Model.PageSize, Model.TotalCount, Model.PageIndex));
-</div>

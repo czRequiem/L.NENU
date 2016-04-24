@@ -100,6 +100,7 @@ namespace L.NENU.Web.Controllers
         }
         #endregion
 
+
         #region  Edit视图响应方法
         /// <summary>
         /// 修改页面 数据准备 2016年4月23日 22:09:16 林
@@ -157,6 +158,7 @@ namespace L.NENU.Web.Controllers
         }
 
         #endregion
+
 
         #region  delete反应
         public ActionResult Delete(int id)
