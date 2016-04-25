@@ -18,9 +18,12 @@
 }
 <h2>
     节目信息表</h2>
-<p>
-    @Html.ActionLink("发布一个新的节目", "Create") @Html.ActionLink("管理节目单信息", "../AlbumInfoM/Index")
-</p>
+@if (L.NENU.Web.Apps.AppHelper.LoginedUser.Name == "sa")
+{
+    <p>
+        @Html.ActionLink("发布一个新的节目", "Create")
+    </p>
+}
 <table style="width: 950px;" class="tbl">
     <tr>
         <th class="td" style="width: 75px;">
@@ -68,42 +71,48 @@
                 else
                 { 
                     @:不存在
-                                }
+                                                                                                                }
             </td>
             <td>
-                @if (item.intro != ""&&item.intro!=null)
+                @if (item.intro != "" && item.intro != null)
                 {
                     @:存在
                      }
                 else
                 {
                     @:不存在
-                                                                                            }
+                                                                                                                                                                            }
             </td>
             <td>
-                @if (item.HtmlUrl != ""&&item.HtmlUrl!=null)
+                @if (item.HtmlUrl != "" && item.HtmlUrl != null)
                 {
                     @:存在
                      }
                 else
                 {
                     @:不存在
-                                                                                            }
+                                                                                                                                                                            }
             </td>
             <td>
-                @if (item.WeiChatUrl != ""&&item.WeiChatUrl!=null)
+                @if (item.WeiChatUrl != "" && item.WeiChatUrl != null)
                 { 
                     @:存在
                 }
                 else
                 {
                     @:不存在
-                                    }
+                                                                                                                    }
             </td>
             <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("详细信息", "Details", new { id = item.ID }) |
-                @Html.ActionLink("删除", "Delete", new { id = item.ID }, new { onclick = "return confirm('确认删除?删除后将不可恢复')" })
+                @Html.ActionLink("该功能暂未完成 ", "Details", new { id = item.ID }) |
+                @if (L.NENU.Web.Apps.AppHelper.LoginedUser.Name == "sa")
+                {
+                    @Html.ActionLink("修改", "Edit", new { id = item.ID })
+                }|
+                @if (L.NENU.Web.Apps.AppHelper.LoginedUser.Name == "sa")
+                {
+                    @Html.ActionLink("删除", "Delete", new { id = item.ID }, new { onclick = "return confirm('确认删除?删除后将不可恢复')" })
+                }
             </td>
         </tr>
     }

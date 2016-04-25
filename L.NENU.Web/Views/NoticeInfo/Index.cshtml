@@ -1,15 +1,11 @@
 ﻿@model IEnumerable<L.NENU.Domain.NoticeInfo>
-
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutM.cshtml";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>
+    公告发布与管理
+</h2>
 <table>
     <tr>
         <th>
@@ -21,26 +17,29 @@
         <td>
             创建人
         </td>
-        <th></th>
+        <th>
+        </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoticeTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreateUser.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoticeTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreateUser.UserName)
+            </td>
+            <td>
+                @Html.ActionLink("修改公告", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("查看公告", "Details", new { id = item.ID }) |
+                @Html.ActionLink("删除公告", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 </table>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>

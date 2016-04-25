@@ -104,6 +104,30 @@ namespace L.NENU.Manager
 
 
         /// <summary>
+        /// 指定开始地点  指定返回行数  返回指定行数  2016年4月25日 18:34:33 林
+        /// </summary>
+        /// <param name="start">开始行不包括本行</param>
+        /// <param name="size">返回行数</param>
+        /// <param name="listOrder">排序条件</param>
+        /// <param name="criterionList">查询条件</param>
+        /// <returns></returns>
+        public IList<T> SlicedFindAll(int start, int size, IList<Order> listOrder, IList<ICriterion> criterionList)
+        {
+            if (criterionList == null)  //如果为空则赋值一个总数为0的集合
+            {
+                criterionList = new List<ICriterion>();
+            }
+            if (listOrder == null)   //如果为空则赋值一个总数为0的集合
+            {
+                listOrder = new List<Order>();
+            }
+
+            Array arr = SlicedFindAll(typeof(T), start, size, listOrder.ToArray(), criterionList.ToArray());
+            return arr as IList<T>;//将数组转换为IList集合
+        }
+
+
+        /// <summary>
         /// 通用方法  实现传入对象对数据库进行查询  
         /// </summary>
         /// <param name="queryConditions">传入的对象</param>

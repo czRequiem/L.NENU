@@ -6,6 +6,7 @@ using L.NENU.Domain;
 using L.NENU.Domain.Send;
 using L.NENU.Manager;
 using L.NENU.Service;
+using NHibernate.Criterion;
 
 namespace L.NENU.Component
 {
@@ -125,5 +126,6 @@ namespace L.NENU.Component
             manager.Update(showInfo);
             CreateTheHostList(showInfo.ID,TheHostID);
         }
+
     }
 }

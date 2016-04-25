@@ -45,5 +45,16 @@ namespace L.NENU.Service
 
 
         void Delete(ShowInfo showInfo);
+
+
+        /// <summary>
+        /// 指定开始地点  指定返回行数  返回指定行数
+        /// </summary>
+        /// <param name="start">开始行不包括本行</param>
+        /// <param name="size">返回行数</param>
+        /// <param name="listOrder">排序条件</param>
+        /// <param name="criterionList">查询条件</param>
+        /// <returns></returns>
+        IList<ShowInfo> SlicedFindAll(int start, int size, IList<NHibernate.Criterion.Order> listOrder, IList<NHibernate.Criterion.ICriterion> criterionList);
     }
 }
