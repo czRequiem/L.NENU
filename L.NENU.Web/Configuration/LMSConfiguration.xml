@@ -5,4 +5,5 @@
   <element Id="ITheHostInfoService" Service="L.NENU.Service.ITheHostInfoService, L.NENU.Service" Class="L.NENU.Component.TheHostInfoComponent,L.NENU.Component"></element>
   <element Id="IShowInfoService" Service="L.NENU.Service.IShowInfoService, L.NENU.Service" Class="L.NENU.Component.ShowInfoComponent,L.NENU.Component"></element>
   <element Id="IAlbumInfoService" Service="L.NENU.Service.IAlbumInfoService, L.NENU.Service" Class="L.NENU.Component.AlbumInfoComponent,L.NENU.Component"></element>
+  <element Id="INoticeInfoService" Service="L.NENU.Service.INoticeInfoService, L.NENU.Service" Class="L.NENU.Component.NoticeInfoComponent,L.NENU.Component"></element>
 </root>

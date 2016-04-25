@@ -10,5 +10,13 @@ namespace L.NENU.Service
         Domain.TheHostInfo Login(string userName, string password);
 
         IList<Domain.TheHostInfo> GetAll();
+
+        void Create(Domain.TheHostInfo theHost);
+
+        Domain.TheHostInfo Get(int id);
+
+        void Update(Domain.TheHostInfo theHostInfo);
+
+        void Delete(Domain.TheHostInfo theHostInfo);
     }
 }

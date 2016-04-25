@@ -1,0 +1,100 @@
+﻿@model L.NENU.Domain.TheHostInfo
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutM.cshtml";
+    <link rel="stylesheet" href="../../Content/css/nivo-slider.css" type="text/css" media="screen" />
+    <link href="../../Content/contact-form/css/style.css" media="screen" rel="stylesheet"
+        type="text/css" />
+    <link href="../../Content/contact-form/css/uniform.css" media="screen" rel="stylesheet"
+        type="text/css" />
+}
+<h2>
+    创建一个新的主播
+</h2>
+<form action="#" class="TTWForm" method="post" id="myFrom">
+<fieldset>
+    <legend>TheHostInfo</legend>
+    <table style="width: 900px;">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Account)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.Account)
+                @Html.ValidationMessageFor(model => model.Account)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Password)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.Password)
+                @Html.ValidationMessageFor(model => model.Password)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.UserName)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.UserName)
+                @Html.ValidationMessageFor(model => model.UserName)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Name)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.Name)
+                @Html.ValidationMessageFor(model => model.Name)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.JoinTime)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.JoinTime)
+                @Html.ValidationMessageFor(model => model.JoinTime)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.BirthTime)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.BirthTime)
+                @Html.ValidationMessageFor(model => model.BirthTime)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.PhptoUrl)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.PhptoUrl)
+                @Html.ValidationMessageFor(model => model.PhptoUrl)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @Html.LabelFor(model => model.Introduce)
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                @Html.EditorFor(model => model.Introduce)
+                @Html.ValidationMessageFor(model => model.Introduce)
+            </td>
+        </tr>
+    </table>
+    <p>
+        <input type="submit" value="确认保存" />
+    </p>
+</fieldset>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

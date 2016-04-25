@@ -52,6 +52,7 @@
     <Compile Include="AlbumInfoComponent.cs" />
     <Compile Include="BaseComponent.cs" />
     <Compile Include="DoWeiXinChat.cs" />
+    <Compile Include="NoticeInfoComponent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShowInfoComponent.cs" />
     <Compile Include="TheHostInfoComponent.cs" />

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<L.NENU.Domain.TheHostInfo>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutM.cshtml";
+}
+
+<h2>主播管理</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+           登录账号
+        </th>
+        <th>
+            呢称
+        </th>
+        <th>
+            姓名
+        </th>
+        <th>
+            入站时间
+        </th>
+        <th>
+            生日
+        </th>
+        <th>
+            简介
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JoinTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Introduce)
+        </td>
+        <td>
+            @Html.ActionLink("修改", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("查看其所有节目", "Details", new { id=item.ID }) |
+            @Html.ActionLink("删除主播", "Delete", new { id = item.ID }, new { onclick = "return confirm('确认删除?删除后将不可恢复')" })
+        </td>
+    </tr>
+}
+
+</table>

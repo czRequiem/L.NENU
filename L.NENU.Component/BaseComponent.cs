@@ -69,7 +69,7 @@ namespace L.NENU.Component
         /// 
         /// </summary>
         /// <param name="t"></param>
-        public virtual void Create(T t)
+        public void Create(T t)
         {
             manager.Create(t);
         }

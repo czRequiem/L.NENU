@@ -11,6 +11,15 @@ namespace L.NENU.Domain
     public class NoticeInfo:EntityBase
     {
         /// <summary>
+        /// 节目标题
+        /// </summary>
+        [Property(NotNull = true, Length = 50)]
+        [Required(ErrorMessage = "不能为空")]
+        [StringLength(50, ErrorMessage = "不能超过50个字符")]
+        [Display(Name = "公告标题")]
+        public string NoticeTitle { get; set; }
+
+        /// <summary>
         /// 创建时间
         /// </summary>
         [Property]

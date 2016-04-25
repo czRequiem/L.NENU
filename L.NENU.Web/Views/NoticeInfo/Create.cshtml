@@ -1,0 +1,40 @@
+﻿@model L.NENU.Domain.NoticeInfo
+@{
+    ViewBag.Title = "Create";
+    
+    <link rel="stylesheet" href="../../Content/css/nivo-slider.css" type="text/css" media="screen" />
+    <link href="../../Content/contact-form/css/style.css" media="screen" rel="stylesheet" type="text/css" />
+    <link href="../../Content/contact-form/css/uniform.css" media="screen" rel="stylesheet" type="text/css" />
+}
+<h2>
+    Create</h2>
+<form action="#" class="TTForm" method="post" id="myFrom">
+<fieldset>
+    <legend>NoticeInfo</legend>
+    <table style="width: 900px;">
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.NoticeTitle)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.NoticeTitle)
+                @Html.ValidationMessageFor(model => model.NoticeTitle)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                @Html.LabelFor(model => model.Introduce)
+            </td>
+            <td style="width: 600px;">
+                @Html.EditorFor(model => model.Introduce)
+                @Html.ValidationMessageFor(model => model.Introduce)
+            </td>
+    </table>
+    <p>
+        <input type="submit" value="Create" />
+    </p>
+</fieldset>
+</form>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

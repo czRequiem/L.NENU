@@ -118,10 +118,12 @@
     <Compile Include="Controllers\AlbumInfoMController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InformationController.cs" />
+    <Compile Include="Controllers\NoticeInfoController.cs" />
     <Compile Include="Controllers\ShowController.cs" />
     <Compile Include="Controllers\ShowInfoMController.cs" />
     <Compile Include="Controllers\TheCoreController.cs" />
     <Compile Include="Controllers\TheHostController.cs" />
+    <Compile Include="Controllers\TheHostMController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -474,6 +476,14 @@
     <Content Include="Views\AlbumInfoM\Create.cshtml" />
     <Content Include="Views\AlbumInfoM\Edit.cshtml" />
     <Content Include="Views\AlbumInfoM\Details.cshtml" />
+    <Content Include="Views\TheHostM\Index.cshtml" />
+    <Content Include="Views\TheHostM\Create.cshtml" />
+    <Content Include="Views\TheHostM\Edit.cshtml" />
+    <Content Include="Views\TheHostM\Details.cshtml" />
+    <Content Include="Views\NoticeInfo\Index.cshtml" />
+    <Content Include="Views\NoticeInfo\Create.cshtml" />
+    <Content Include="Views\NoticeInfo\Edit.cshtml" />
+    <Content Include="Views\NoticeInfo\Details.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
