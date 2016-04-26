@@ -49,5 +49,10 @@ namespace L.NUNE.Controllers
             return queryConditions;
         }
 
+
+        public ActionResult Introduce1314()
+        {
+            return View();
+        }
     }
 }

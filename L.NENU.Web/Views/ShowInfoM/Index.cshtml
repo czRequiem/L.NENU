@@ -18,7 +18,7 @@
 }
 <h2>
     节目信息表</h2>
-@if (L.NENU.Web.Apps.AppHelper.LoginedUser.Name == "sa")
+@if (L.NENU.Web.Apps.AppHelper.LoginedUser.Account == "sa")
 {
     <p>
         @Html.ActionLink("发布一个新的节目", "Create")
@@ -105,11 +105,11 @@
             </td>
             <td>
                 @Html.ActionLink("该功能暂未完成 ", "Details", new { id = item.ID }) |
-                @if (L.NENU.Web.Apps.AppHelper.LoginedUser.Name == "sa")
+                @if (L.NENU.Web.Apps.AppHelper.LoginedUser.Account == "sa")
                 {
                     @Html.ActionLink("修改", "Edit", new { id = item.ID })
                 }|
-                @if (L.NENU.Web.Apps.AppHelper.LoginedUser.Name == "sa")
+                @if (L.NENU.Web.Apps.AppHelper.LoginedUser.Account == "sa")
                 {
                     @Html.ActionLink("删除", "Delete", new { id = item.ID }, new { onclick = "return confirm('确认删除?删除后将不可恢复')" })
                 }
