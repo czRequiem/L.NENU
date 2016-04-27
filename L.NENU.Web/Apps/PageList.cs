@@ -8,7 +8,8 @@ namespace L.NENU.Web.Apps
     public class PageList<T> : List<T>
     {
         /// <summary>    
-        /// 当前分页    
+        /// 当前分页 
+        /// 111
         /// </summary>    
         public int PageIndex { get; private set; }
         /// <summary>    
