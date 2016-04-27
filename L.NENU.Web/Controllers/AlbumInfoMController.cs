@@ -30,7 +30,6 @@ namespace L.NENU.Web.Controllers
 
         public ActionResult Create()
         {
-            int x = 1;
             return View();
         }
 
